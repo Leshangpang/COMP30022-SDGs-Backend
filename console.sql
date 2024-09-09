@@ -52,4 +52,3 @@ CREATE TABLE certificate (
                              receive_date DATETIME NOT NULL,
                              FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
-
