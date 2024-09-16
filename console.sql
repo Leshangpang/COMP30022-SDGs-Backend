@@ -8,7 +8,10 @@ CREATE TABLE users (
 
 CREATE TABLE module (
                       module_id INT PRIMARY KEY AUTO_INCREMENT,
-                      module_name VARCHAR(255) NOT NULL UNIQUE
+                      module_name VARCHAR(255) NOT NULL UNIQUE,
+                      quiz_num INT NOT NULL DEFAULT 0,
+                      resource_num INT NOT NULL DEFAULT 0,
+                      card_num INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE resource (

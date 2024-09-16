@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chen.itproject.mappers.ModuleMapper">
+
+    <update id="update">
+        update module
+        <set>
+            <if test="module_name != null and module_name != ''">module_name = #{moduleName},</if>
+            <if test="quiz_num != null">quiz_num = #{quizNum},</if>
+            <if test="resource_num != null">resource_num = #{resourceNum},</if>
+            <if test="card_num != null">card_num = #{cardNum}</if>
+        </set>
+        WHERE module_id = #{moduleId};
+    </update>
+
+</mapper>
