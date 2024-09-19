@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chen.itproject.mappers.CommunityMapper">
+
+    <update id="update">
+        update community_quiz
+        <set>
+            <if test="moduleId != null">module_id = #{moduleId},</if>
+            <if test="question != null and question != ''">question = #{question},</if>
+            <if test="choice != null and choice != ''">choice = #{choice},</if>
+            <if test="answer != null">answer = #{answer},</if>
+            <if test="averageRating != null">average_rating = #{averageRating},</if>
+            <if test="ratedNum != null">rated_num = #{ratedNum}</if>
+        </set>
+        WHERE question_id = #{questionId};
+    </update>
+
+    <insert id="rate">
+        INSERT INTO personal_rate (user_id, question_id, personal_rating)
+        VALUES (#{userId}, #{questionId}, #{personalRating})
+        ON DUPLICATE KEY UPDATE
+        personal_rating = #{personalRating}
+    </insert>
+
+    <select id="list" resultType="com.chen.itproject.pojo.CommunityQuiz">
+        SELECT
+            cq.question_id,
+            cq.user_id,
+            cq.module_id,
+            cq.question,
+            cq.choice,
+            cq.answer,
+            cq.rated_num,
+            cq.average_rating,
+            pr.personal_rating
+        FROM
+            community_quiz cq
+        LEFT JOIN
+            personal_rate pr
+        ON
+            cq.question_id = pr.question_id AND pr.user_id = #{loginUserId}
+        WHERE module_id = #{moduleId};
+
+    </select>
+
+</mapper>

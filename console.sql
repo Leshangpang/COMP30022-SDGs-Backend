@@ -26,27 +26,26 @@ CREATE TABLE resource (
 );
 
 
-CREATE TABLE quiz (
-                          quiz_id INT PRIMARY KEY AUTO_INCREMENT,
-                          user_id INT NOT NULL,
-                          module_id INT NOT NULL,
-                          question VARCHAR(255) NOT NULL,
-                          choice VARCHAR(600) NOT NULL,
-                          answer INT NOT NULL,
-                          FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-                          FOREIGN KEY (module_id) REFERENCES module(module_id) ON DELETE CASCADE
+CREATE TABLE community_quiz (
+                               question_id INT PRIMARY KEY AUTO_INCREMENT,
+                               user_id INT NOT NULL,
+                               module_id INT NOT NULL,
+                               question VARCHAR(255) NOT NULL,
+                               choice VARCHAR(600) NOT NULL,
+                               answer INT NOT NULL,
+                               average_rating FLOAT,
+                               rated_num INT DEFAULT 0,
+                               FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+                               FOREIGN KEY (module_id) REFERENCES module(module_id) ON DELETE CASCADE
 );
 
-CREATE TABLE user_quiz (
-                           quiz_id INT PRIMARY KEY AUTO_INCREMENT,
-                           user_id INT NOT NULL,
-                           module_id INT NOT NULL,
-                           question VARCHAR(255) NOT NULL,
-                           choice VARCHAR(600) NOT NULL,
-                           answer INT NOT NULL,
-                           rating INT default 0,
-                           FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-                           FOREIGN KEY (module_id) REFERENCES module(module_id) ON DELETE CASCADE
+CREATE TABLE personal_rate (
+                               user_id INT NOT NULL,
+                               question_id INT NOT NULL,
+                               personal_rating FLOAT NOT NULL,
+                               PRIMARY KEY (user_id, question_id),
+                               FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+                               FOREIGN KEY (question_id) REFERENCES community_quiz(question_id) ON DELETE CASCADE
 );
 
 CREATE TABLE certificate (
@@ -55,3 +54,4 @@ CREATE TABLE certificate (
                              receive_date DATETIME NOT NULL,
                              FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
+

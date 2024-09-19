@@ -315,7 +315,7 @@
                 "choice": "samplesample,,,samplesample,,,samplesample,,,samplesample",
                 "answer": 1,
                 //the max rating is 5
-                "totalRating": 4.2,
+                "averageRating": 4.2,
                 "personalRating": 5.0
             },
             {
@@ -325,10 +325,10 @@
                 "question": "samplesamplesamplesamplesamplesample",
                 "choice": "samplesample,,,samplesample,,,samplesample,,,samplesample",
                 "answer": 1,
-                //if no one has ever rated this question, it will be 6.0
-                "totalRating": 6.0,
-                // if the user didn't rate this question, it will be 6.0
-                "personalRating": 6.0
+                //if no one has ever rated this question, it will be null
+                "averageRating": null,
+                // if the user didn't rate this question, it will be null
+                "personalRating": null
             }
         ]
     }
@@ -456,7 +456,9 @@
             "moduleId": 3,
             "question": "samplesamplesamplesamplesamplesample",
             "choice": "samplesample,,,samplesample,,,samplesample,,,samplesample",
-            "answer": 1
+            "answer": 1,
+            "ratedNum": 2,
+            "averageRating": 5.0
         }
     }
     ```
@@ -495,11 +497,45 @@
 
 
 
+### 6. Rate question by id
+
+**<u>The average rating will be automatically updated</u>**
+
+- request path: /community/rate
+
+- request method: POST
+
+- request arguments type: within URL
+
+  - questionId: must
+
+  - personalRating: must
+
+  - ```json
+    https://sample.com/community/rate?questionId=3&personalRating=4.0
+    ```
+
+    
+
+- response:
+
+  - ```json
+    //sample
+    
+    {
+        "code": 1,
+        "msg": "success",
+        "data":null
+    }
+    ```
+
+
+
 ## Quiz related
 
-### 1. Get quiz by serial number and module id
+### 1. Get communityQuiz by serial number and module id
 
-- request path: /quiz
+- request path: /communityQuiz
 
 - request method: GET
 
