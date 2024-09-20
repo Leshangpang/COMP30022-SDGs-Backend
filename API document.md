@@ -578,11 +578,11 @@
 
 
 
-## Learning resource related
+## Learning process related
 
-### 1. Get resource list
+### 1. Get process list
 
-- request path: /resource
+- request path: /process
 
 - request method: GET
 
@@ -591,7 +591,7 @@
   - moduleId: must
 
   - ```json
-    https://sample.com/resource?moduleId=1
+    https://sample.com/process?moduleId=1
     ```
 
     
@@ -632,9 +632,9 @@
 
 
 
-### 2. Get resource by serial number and module id
+### 2. Get process by serial number and module id
 
-- request path: /resource
+- request path: /process
 
 - request method: GET
 
@@ -727,14 +727,12 @@
 
 - request method: GET
 
-- request arguments type: path argument
-
-  - userId: must
+- request arguments type: no argument needed
 
   - ```json
-    https://sample.com/process/{id}
+    https://sample.com/process
     ```
-
+  
     
 
 - response:
@@ -748,26 +746,27 @@
         "data": [
             {
                 "moduleId": 1,
-                "resourcesFinised": "1,4,5",
-                "cardsfinishedNum": 10,
+                //no resources finished will be ""
+                "resourcesFinished": "",
+                "cardsFinishedNum": 10,
                 "quizPassed": 5
             },
             {
                 "moduleId": 2,
-                "resourcesFinised": "1,4,5",
-                "cardsfinishedNum": 10,
+                "resourcesFinished": "1,4,5",
+                "cardsFinishedNum": 10,
                 "quizPassed": 5
             },
             {
                 "moduleId": 3,
-                "resourcesFinised": "1,4,5",
-                "cardsfinishedNum": 10,
+                "resourcesFinished": "1,4,5",
+                "cardsFinishedNum": 10,
                 "quizPassed": 5
             },
             {
                 "moduleId": 4,
-                "resourcesFinised": "1,4,5",
-                "cardsfinishedNum": 10,
+                "resourcesFinished": "1,4,5",
+                "cardsFinishedNum": 10,
                 "quizPassed": 5
             }
         ]
@@ -782,23 +781,16 @@
 
 - request method: GET
 
-- request arguments type: json
-
-  - userId: must
+- request arguments type: path argument
 
   - moduleId: must
 
   - ```json
-    //sample
-    
-    {
-        "moduleId":3,
-        "userId":2
-    }
+    https://sample.com/process/{moduleId}
     ```
-
+  
     
-
+  
 - response:
 
   - ```json
@@ -809,8 +801,8 @@
         "msg": "success",
         "data": {
             "moduleId": 3,
-            "resourcesFinised": "1,4,5",
-            "cardsfinishedNum": 10,
+            "resourcesFinished": "1,4,5",
+            "cardsFinishedNum": 10,
             "quizPassed": 5
         }
     }
@@ -826,8 +818,6 @@
 
 - request arguments type: json
 
-  - userId: must
-
   - moduleId: must
 
   - resourcesFinised: unnecessary
@@ -840,20 +830,18 @@
     //sample
     
     {
-        "moduleId": 3,
-        "userId": 2,
+        "moduleId": 2,
         
         //transfer if needed
-        
-        //only put the SN of resource needed to be added
-        "resourcesFinised": "4",
-        "cardsfinishedNum": 14,
+        //only put the SN of process needed to be added
+        "resourcesFinished": "4",
+        "cardsFinishedNum": 14,
         "quizPassed": 10
     }
     ```
-
+  
     
-
+  
 - response:
 
   - ```json
