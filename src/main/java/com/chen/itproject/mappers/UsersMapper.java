@@ -1,6 +1,5 @@
 package com.chen.itproject.mappers;
 
-import com.chen.itproject.pojo.Resource;
 import com.chen.itproject.pojo.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;

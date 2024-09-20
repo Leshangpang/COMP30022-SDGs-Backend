@@ -3,6 +3,7 @@ package com.chen.itproject.controller;
 
 import com.chen.itproject.pojo.Result;
 import com.chen.itproject.pojo.User;
+import com.chen.itproject.services.ProcessService;
 import com.chen.itproject.services.UsersService;
 import com.chen.itproject.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class LoginController {
 
     @Autowired
     UsersService usersService;
+
+    @Autowired
+    private ProcessService processService;
 
     @PostMapping
     public Result login(@RequestBody User user){
@@ -40,8 +44,10 @@ public class LoginController {
     public Result create(@RequestBody User user) {
 
         int code = usersService.signUp(user);
+        User userCreated = usersService.login(user);
+        int initResult = processService.init(userCreated.getUserId());
 
-        if (code == 1) {
+        if (code == 1 && initResult == 1) {
             return Result.successResult(null);
         } else {
             return Result.errorResult();
