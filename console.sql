@@ -14,7 +14,7 @@ CREATE TABLE module (
                       card_num INT NOT NULL DEFAULT 0
 );
 
-CREATE TABLE resource (
+CREATE TABLE process (
                        resource_id INT PRIMARY KEY AUTO_INCREMENT,
                        user_id INT NOT NULL,
                        module_id INT NOT NULL,
@@ -48,10 +48,23 @@ CREATE TABLE personal_rate (
                                FOREIGN KEY (question_id) REFERENCES community_quiz(question_id) ON DELETE CASCADE
 );
 
+CREATE TABLE process (
+                               user_id INT NOT NULL,
+                               module_id INT NOT NULL,
+                               resources_finished VARCHAR(255) default '',
+                               cards_finished_num INT default 0,
+                               quiz_passed INT default 0,
+                               PRIMARY KEY (user_id, module_id),
+                               FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+                               FOREIGN KEY (module_id) REFERENCES module(module_id) ON DELETE CASCADE
+);
+
 CREATE TABLE certificate (
                              certificate_id INT PRIMARY KEY AUTO_INCREMENT,
                              user_id INT NOT NULL,
                              receive_date DATETIME NOT NULL,
                              FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
+
+
 

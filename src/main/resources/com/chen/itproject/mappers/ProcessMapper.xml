@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chen.itproject.mappers.ProcessMapper">
+
+
+
+    <update id="update">
+        update process
+        <set>
+            <if test="resourcesFinished != null and resourcesFinished != ''">
+                resources_finished = #{resourcesFinished},</if>
+            <if test="cardsFinishedNum != null">cards_finished_num = #{cardsFinishedNum},</if>
+            <if test="quizPassed != null">quiz_passed = #{quizPassed}</if>
+        </set>
+        WHERE module_id = #{moduleId} AND user_id = #{userId};
+    </update>
+
+</mapper>
