@@ -14,17 +14,6 @@ CREATE TABLE module (
                       card_num INT NOT NULL DEFAULT 0
 );
 
-CREATE TABLE process (
-                       resource_id INT PRIMARY KEY AUTO_INCREMENT,
-                       user_id INT NOT NULL,
-                       module_id INT NOT NULL,
-                       title VARCHAR(255) NOT NULL,
-                       author VARCHAR(255) NOT NULL,
-                       content TEXT,
-                       FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-                       FOREIGN KEY (module_id) REFERENCES module(module_id) ON DELETE CASCADE
-);
-
 
 CREATE TABLE community_quiz (
                                question_id INT PRIMARY KEY AUTO_INCREMENT,

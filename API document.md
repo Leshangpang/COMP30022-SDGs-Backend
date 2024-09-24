@@ -531,9 +531,9 @@
 
 
 
-## Quiz related
+## ~~Quiz related~~
 
-### 1. Get communityQuiz by serial number and module id
+### ~~1. Get communityQuiz by serial number and module id~~
 
 - request path: /communityQuiz
 
@@ -578,9 +578,9 @@
 
 
 
-## Learning process related
+## ~~Learning process related~~
 
-### 1. Get process list
+### ~~1. Get process list~~
 
 - request path: /process
 
@@ -632,7 +632,7 @@
 
 
 
-### 2. Get process by serial number and module id
+### ~~2. Get process by serial number and module id~~
 
 - request path: /process
 
@@ -675,9 +675,9 @@
 
 
 
-## Flash cards related
+## ~~Flash cards related~~
 
-### 1. Get card by serial number and module id
+### ~~1. Get card by serial number and module id~~
 
 - request path: /card
 
