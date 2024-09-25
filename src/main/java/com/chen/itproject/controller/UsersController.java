@@ -14,6 +14,11 @@ public class UsersController {
     @Autowired
     private UsersService usersService;
 
+    /**
+     * Update an existing user
+     * @param user The user object with updated information
+     * @return Result object indicating success or failure
+     */
     @PostMapping
     public Result update(@RequestBody User user) {
         int code = usersService.update(user);
@@ -25,6 +30,11 @@ public class UsersController {
         }
     }
 
+    /**
+     * Search for a user by their ID
+     * @param user The user object containing the ID to search for
+     * @return Result object containing the user data or an error
+     */
     @GetMapping
     public  Result searchById(User user) {
         User userSearched = usersService.searchById(user);
@@ -36,6 +46,11 @@ public class UsersController {
         }
     }
 
+    /**
+     * Delete a user
+     * @param user The user object to be deleted
+     * @return Result object indicating success or failure
+     */
     @DeleteMapping
     public Result delete(@RequestBody User user) {
 
