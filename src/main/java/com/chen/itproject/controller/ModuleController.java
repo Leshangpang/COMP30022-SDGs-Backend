@@ -16,6 +16,11 @@ public class ModuleController {
     @Autowired
     ModuleService moduleService;
 
+    /**
+     * Add a new module
+     * @param module The module object to be added
+     * @return Result object indicating success or failure
+     */
     @PutMapping
     public Result addModule(@RequestBody Module module) {
 
@@ -28,6 +33,11 @@ public class ModuleController {
         }
     }
 
+    /**
+     * Update an existing module
+     * @param module The module object with updated information
+     * @return Result object indicating success or failure
+     */
     @PostMapping
     public Result update(@RequestBody Module module) {
 
@@ -40,6 +50,10 @@ public class ModuleController {
         }
     }
 
+    /**
+     * Retrieve a list of all modules
+     * @return Result object containing the list of modules or an error
+     */
     @GetMapping
     public Result list() {
 
@@ -52,6 +66,11 @@ public class ModuleController {
         }
     }
 
+    /**
+     * Retrieve a module by its ID
+     * @param id The ID of the module
+     * @return Result object containing the module data or an error
+     */
     @GetMapping("/{id}")
     public Result byId(@PathVariable Integer id) {
 
@@ -64,6 +83,11 @@ public class ModuleController {
         }
     }
 
+    /**
+     * Delete a specific module
+     * @param module The module object to be deleted
+     * @return Result object indicating success or failure
+     */
     @DeleteMapping
     public Result delete(@RequestBody Module module) {
 

@@ -55,6 +55,8 @@
 
 ### 2. Sign up
 
+**<u>the process tracking for each module will be automatically initialized, so no further operations needed</u>**
+
 - request path: /login
 
 - request method: PUT
