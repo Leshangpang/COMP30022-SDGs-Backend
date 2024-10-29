@@ -533,6 +533,136 @@
 
 
 
+### 7. Get user's question list
+
+- request path: /community
+
+- request method: GET
+
+- request arguments type: no arguments
+
+  - ```json
+    https://sample.com/community
+    ```
+
+    
+
+- response:
+
+  - ```json
+    //sample
+    
+    {
+        "code":1,
+        "msg":"success",
+        "data":[
+            {
+                "questionId": 2,
+                "userId": 3,
+                "moduleId": 3,
+                "question": "samplesamplesamplesamplesamplesample",
+                //choices are separated by three commas
+                "choice": "samplesample,,,samplesample,,,samplesample,,,samplesample",
+                "answer": 1,
+                //the max rating is 5
+                "averageRating": 4.2
+            },
+            {
+                "questionId": 3,
+                "userId": 3,
+                "moduleId": 3,
+                "question": "samplesamplesamplesamplesamplesample",
+                "choice": "samplesample,,,samplesample,,,samplesample,,,samplesample",
+                "answer": 1,
+                //if no one has ever rated this question, it will be null
+                "averageRating": null
+            }
+        ]
+    }
+    ```
+
+
+
+### 8. Add comment
+
+- request path: /community/comment
+
+- request method: PUT
+
+- request arguments type: json
+
+  - questionId: must
+
+  - comment: must
+
+  - ```json
+    //sample
+    
+    {
+        "questionId":1,
+        "comment":"samplesamplesamplesamplesamplesample"
+    }
+    ```
+
+- response:
+
+  - ```json
+    //sample
+    
+    {
+        "code":1,
+        "msg":"success",
+        "data":null
+    }
+    ```
+
+
+
+### 9. Get question's comments
+
+- request path: /community/comment
+
+- request method: GET
+
+- request arguments type: within URL
+
+  - questionId: must
+
+  - ```json
+    https://sample.com/community/comment?questionId=3
+    ```
+
+    
+
+- response:
+
+  - ```json
+    //sample
+    
+    {
+        "code":1,
+        "msg":"success",
+        "data":[
+            {
+                "questionId": 2,
+                "userId": 3,
+                "comment": "samplesamplesamplesamplesamplesample",
+                "personalRating": 5.0
+            },
+            {
+                "questionId": 2,
+                "userId": 2,
+                "comment": "samplesamplesamplesamplesamplesample",
+                "personalRating": 4.0
+            }
+        ]
+    }
+    ```
+
+
+
+
+
 ## ~~Quiz related~~
 
 ### ~~1. Get communityQuiz by serial number and module id~~

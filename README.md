@@ -40,17 +40,17 @@ This is a Spring Boot backend project designed to provide various services such 
 ```
 ├── main
 │   ├── java/com/chen/itproject
-│	│	├── configuration     # configuration for interceptors
+│   │   ├── configuration     # configuration for interceptors
 │   │   ├── controller        # Controllers for handling HTTP requests
 │   │   ├── interceptor       # Interceptors for request handling
-│	│	├── mappers           # mappers containing database interaction
+│   │   ├── mappers           # mappers containing database interaction
 │   │   ├── pojo              # entity classes for data models
 │   │   ├── services          # Services containing business logic
 │   │   ├── util              # Utility classes (e.g., JWT utilities)
-│	│	├── ItProjectApplication.java  # entry point for the application
+│   │   ├── ItProjectApplication.java  # entry point for the application
 │   └── resources
 │       ├── application.yml   # Configuration files
-│		├── com/chen/itproject/mappers  #sql xml file for mappers
+│       ├── com/chen/itproject/mappers  #sql xml file for mappers
 └── test/java/com/chen/itproject
     ├── UnitTest.java         # Unit test cases
     ├── IntegratedTestIt.java # integrated test cases

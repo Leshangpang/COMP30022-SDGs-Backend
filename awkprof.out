@@ -1,0 +1,15 @@
+	# gawk profile, created Wed Oct 09 08:00:42 2024
+
+	# Rule(s)
+
+	{
+		add += $1
+		subs += $2
+		loc += $1 - $2
+	}
+
+	# END block(s)
+
+	END {
+     1  	printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc
+	}
